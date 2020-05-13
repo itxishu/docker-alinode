@@ -1,4 +1,4 @@
-FROM rdmix/ubuntu-base:latest
+FROM rdmix/ubuntu-base:v0.0.1
 
 LABEL maintainer="starkwang wsd312@163.com"
 LABEL name="alinode-base"
@@ -7,7 +7,6 @@ ENV ALINODE_VERSION v6.0.0
 ENV NODE_VERSION v14.0.0
 ENV ALINODE_BIN_DIR /root/.tnvm/versions/alinode/$ALINODE_VERSION/bin
 
-RUN apt-get -y install wget
 SHELL ["/bin/bash", "--login", "-c"]
 
 # install alinode
