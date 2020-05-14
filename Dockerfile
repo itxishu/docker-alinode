@@ -8,7 +8,10 @@ ENV NODE_VERSION v14.0.0
 ENV ALINODE_BIN_DIR /root/.tnvm/versions/alinode/$ALINODE_VERSION/bin
 
 SHELL ["/bin/bash", "--login", "-c"]
+RUN echo 'export TNVM_DIR="/root/.tnvm"' >> ~/.bashrc
 
+RUN source ~/.bashrc
+RUN source ~/.tnvm/tnvm.sh
 # install alinode
 RUN wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash
 RUN source ~/.tnvm/tnvm.sh && tnvm -v && \
