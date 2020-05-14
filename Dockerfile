@@ -34,3 +34,4 @@ RUN source ~/.tnvm/tnvm.sh \
     && which pm2
 
 ENTRYPOINT ["/bin/bash"]
+CMD ["source", "~/.tnvm/tnvm.sh"]
