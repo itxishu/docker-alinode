@@ -1,4 +1,4 @@
-FROM rdmix/alinode-base:v0.0.10
+FROM rdmix/alinode-base:v0.0.11
 
 LABEL maintainer="starkwang wsd312@163.com"
 LABEL name="alinode-base"

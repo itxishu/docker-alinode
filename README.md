@@ -8,7 +8,5 @@
 
 ## 版本
 ```
-docker pull rdmix/alinode-base:v0.0.1
-
-docker pull rdmix/alinode-base:latest
+docker pull rdmix/alinode-base:v0.0.11
 ```
