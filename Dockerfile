@@ -20,7 +20,4 @@ tnvm install alinode-$ALINODE_VERSION && tnvm use alinode-$ALINODE_VERSION && wh
 # 安装监控和pm2
 npm install @alicloud/agenthub pm2 yarn -g --registry=https://registry.npm.taobao.org && which yarn && \
 # 设置环境变量
-export NODE_LOG_DIR=/tmp && export ENABLE_NODE_LOG=YES \
-&& ln -s $ALINODE_BIN_DIR/* /usr/bin   
-
-RUN node -v
+export NODE_LOG_DIR=/tmp && export ENABLE_NODE_LOG=YES && ln -s $ALINODE_BIN_DIR/* /usr/bin && which node
