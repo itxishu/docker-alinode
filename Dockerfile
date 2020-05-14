@@ -15,19 +15,14 @@ RUN wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.s
 RUN echo 'export TNVM_DIR="/root/.tnvm"' >> ~/.bashrc
 
 RUN source ~/.bashrc
-RUN source ~/.tnvm/tnvm.sh \
-    && tnvm install alinode-$ALINODE_VERSION \
-    && tnvm use alinode-$ALINODE_VERSION \
-    && tnvm install node-$NODE_VERSION && tnvm use node-$NODE_VERSION && node -v \
-    && npm install @alicloud/agenthub -g \
-    # && npm config set registry https://registry.npm.taobao.org \ 不建议设置，可以在项目里面设置
-    && npm install pm2 -g --production \
-    && npm install yarn -g --production \
-    && ln -s /root/.tnvm/versions/node/$NODE_VERSION/bin/* /usr/bin   
-
-# echo env
-RUN which node && node -v \
-    && npm -v \
-    && yarn -v \
-    && which node \
-    && which pm2
+RUN source ~/.tnvm/tnvm.sh && tnvm -v && \
+# 安装node
+tnvm install node-$NODE_VERSION && tnvm use node-$NODE_VERSION && node -v && \
+# 设置淘宝镜像
+npm install -g cnpm --registry=https://registry.npm.taobao.org && \
+tnvm install alinode-$ALINODE_VERSION && tnvm use alinode-$ALINODE_VERSION && which node && \
+# 安装监控和pm2
+npm install @alicloud/agenthub pm2 yarn -g --registry=https://registry.npm.taobao.org && which yarn && \
+# 设置环境变量
+export NODE_LOG_DIR=/tmp && export ENABLE_NODE_LOG=YES \
+&& ln -s $ALINODE_BIN_DIR/* /usr/bin   
