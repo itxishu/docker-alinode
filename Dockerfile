@@ -11,10 +11,6 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 # install alinode
 RUN wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash
-
-RUN echo 'export TNVM_DIR="/root/.tnvm"' >> ~/.bashrc
-
-RUN source ~/.bashrc
 RUN source ~/.tnvm/tnvm.sh && tnvm -v && \
 # 安装node
 tnvm install node-$NODE_VERSION && tnvm use node-$NODE_VERSION && node -v && \
@@ -25,4 +21,6 @@ tnvm install alinode-$ALINODE_VERSION && tnvm use alinode-$ALINODE_VERSION && wh
 npm install @alicloud/agenthub pm2 yarn -g --registry=https://registry.npm.taobao.org && which yarn && \
 # 设置环境变量
 export NODE_LOG_DIR=/tmp && export ENABLE_NODE_LOG=YES \
-&& ln -s $ALINODE_BIN_DIR/* /usr/bin   
+&& ln -s $ALINODE_BIN_DIR/* /usr/bin
+
+RUN ls -al | grep node
