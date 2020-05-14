@@ -9,6 +9,7 @@ RUN echo node ${node -v} \
     && echo node ${yarn -v} \
     && echo node ${tnvm -v} \
     && which node \
+    && which agenthub \
     && which pm2
 
 ENTRYPOINT ["/bin/bash"]
